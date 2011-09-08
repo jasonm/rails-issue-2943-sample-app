@@ -34,6 +34,8 @@ group :test do
   gem "treetop"
   gem "shoulda-matchers"
   gem "launchy"
-  gem "capybara-webkit"
   gem "thin"
+
+  gem "launchy"
+  gem 'selenium-webdriver', '>= 2.4.0'
 end

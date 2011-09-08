@@ -11,7 +11,7 @@ require 'cucumber/rails'
 # prefer to use XPath just remove this line and adjust any selectors in your
 # steps to use the XPath syntax.
 Capybara.save_and_open_page_path = 'tmp'
-Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = :selenium
 Capybara.default_selector = :css
 
 # By default, any exception happening in your Rails application will bubble up
