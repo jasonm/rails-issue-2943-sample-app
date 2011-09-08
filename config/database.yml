@@ -2,7 +2,7 @@ development: &default
   adapter: postgresql
   database: sample_development
   pool: 5
-  timeout: 5000
+  encoding: unicode
 
 test: &test
   <<: *default

@@ -5,6 +5,8 @@
 # files.
 
 require 'cucumber/rails'
+require 'email_spec/cucumber'
+require 'ruby-debug'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
@@ -13,6 +15,15 @@ require 'cucumber/rails'
 Capybara.save_and_open_page_path = 'tmp'
 Capybara.javascript_driver = :selenium
 Capybara.default_selector = :css
+
+def set_javascript_driver_to_chrome
+  Capybara.register_driver :selenium_chrome do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+  Capybara.javascript_driver = :selenium_chrome
+end
+
+#set_javascript_driver_to_chrome
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how 
@@ -34,23 +45,8 @@ ActionController::Base.allow_rescue = false
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin
-  DatabaseCleaner.strategy = :transaction
+  DatabaseCleaner.strategy = :truncation
 rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
-# You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
-# See the DatabaseCleaner documentation for details. Example:
-#
-#   Before('@no-txn,@selenium,@culerity,@celerity,@javascript') do
-#     DatabaseCleaner.strategy = :truncation, {:except => %w[widgets]}
-#   end
-#
-#   Before('~@no-txn', '~@selenium', '~@culerity', '~@celerity', '~@javascript') do
-#     DatabaseCleaner.strategy = :transaction
-#   end
-#
-if RUBY_VERSION =~ /1.8/
-  require 'test/unit/testresult'
-  Test::Unit.run = true
-end
