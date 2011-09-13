@@ -2,7 +2,8 @@
 Feature: Tasks
 
   Scenario: Creating and seeing a task
-    Given the following task exists:
+    Given I sign in
+    And the following task exists:
       | Title  | User                       |
       | hey oh | email: someone@example.com |
     When I go to the home page
