@@ -6,6 +6,8 @@ Feature: Tasks
       | Title  | User                       |
       | hey oh | email: someone@example.com |
     When I go to the home page
+    And I fill in "Title" with "first task"
+    And I press "Create Task"
     And I follow "New Task"
     And I fill in "Title" with "hey do this thing"
     And I press "Create Task"
