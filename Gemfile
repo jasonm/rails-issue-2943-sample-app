@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "rails", :path => "~/dev/rails"
+gem "rails", "3.1.0"
 gem "clearance", "~> 0.12.0"
 gem "sass", "~> 3.1.7"
 gem "high_voltage"
@@ -20,7 +20,6 @@ gem "aws-s3"
 gem "bourbon", "~>  0.1.6"
 gem "copycopter_client", :git => "https://github.com/thoughtbot/copycopter_client.git", :branch => "3-1-stable"
 gem "paper_trail", "2.2.9"
-gem "newrelic_rpm"
 gem "gcal4ruby"
 gem "ejs"
 
